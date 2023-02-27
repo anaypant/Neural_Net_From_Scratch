@@ -1,0 +1,11 @@
+My implementation of a neural network from scratch, able to create a made network and add different optimizers and shit
+
+
+Pls don't be a lot of calculus :(
+
+# Ideas for first parts:
+Make a representation of data that we want our network to have, like an np array
+Do we just wanna use np arrays?
+
+Let's support 2d arrays, as we can convert them in the fitting stage. We will use numpy for math stuff, pickle for loading and saving models,
+we can also use matplotlib to plot shit ig?
