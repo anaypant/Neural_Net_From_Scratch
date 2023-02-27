@@ -1,5 +1,4 @@
 import numpy as np
-import json
 import activations
 
 # Make a module which can hold different 'layers' - Input layer, Dense Layers - which come with an activation
@@ -35,6 +34,19 @@ class Module:
             raise TypeError(
                 "You must pass in an activation as an argument in a dense layer"
             )
+
+    def forward(self, x):
+        # we wanna make a way to pass all the shit through in my form -> this IS the context.
+        # we wanna be flexible with what x is - i want numpy arrays
+        # if the shape of my numpy array matches my input dims, idc
+        for l in self.form:
+            if isinstance(l, Dense):
+                x = l(x)
+        return x
+
+    def backprop(self, x):
+        # calculate the gradients of each layer based on the outputs somehow
+        pass
 
 
 class Layer:
@@ -105,3 +117,10 @@ class Dense(Layer):
 
     def __repr__(self) -> str:
         return "Dense size. " + str(self.shape[1])
+
+    def __call__(self, t):
+        # assuming t's dims match the dims of us
+        if self.shape[0] != t.shape[1]:
+            raise BaseException("Dims don't match")
+        else:
+            return self.activation(np.dot(t, self.weights))
