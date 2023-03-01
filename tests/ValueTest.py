@@ -6,4 +6,4 @@ from nnfs import Value
 v1 = Value(5.0)
 v2 = Value(2.0)
 v3 = v1 - v2
-v4 = v3 * Value(16.66323)
+print(round(Value(16.66323)))
